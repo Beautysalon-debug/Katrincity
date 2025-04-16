@@ -1,0 +1,2201 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KATRINCITY | Салон красоты в Балашихе</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #e8b4b8;
+            --primary-dark: #d89a9e;
+            --secondary: #67595e;
+            --light: #f9f6f7;
+            --accent: #eed6d3;
+            --text: #333333;
+            --text-light: #777777;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text);
+            background-color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                        url('images/image1.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            color: white;
+            position: relative;
+            transition: all 0.5s ease;
+        }
+
+        .scrolled {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: white;
+            text-decoration: none;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            transition: all 0.5s ease;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 1.8rem;
+            color: white;
+            z-index: 1001;
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle:hover {
+            color: var(--primary);
+        }
+
+        .hero {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            width: 100%;
+            padding: 0 20px;
+            opacity: 0;
+            animation: fadeIn 1s ease forwards 0.5s;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            transform: translateY(20px);
+            animation: slideUp 0.8s ease forwards 0.8s;
+        }
+
+        @keyframes slideUp {
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideUp 0.8s ease forwards 1s, fadeIn 0.8s ease forwards 1s;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 15px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.4s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideUp 0.8s ease forwards 1.2s, fadeIn 0.8s ease forwards 1.2s;
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        /* About Section */
+        .section {
+            padding: 100px 0;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .section.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.8rem;
+            color: var(--secondary);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 3px;
+            background: var(--primary);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-img {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            transform: perspective(1000px) rotateY(-10deg);
+            transition: all 0.5s ease;
+        }
+
+        .about-img:hover {
+            transform: perspective(1000px) rotateY(0);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.8s ease;
+        }
+
+        .about-img:hover img {
+            transform: scale(1.05);
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+
+        .about-text p {
+            margin-bottom: 15px;
+            color: var(--text-light);
+        }
+
+        /* Services Section */
+        .services {
+            background-color: white;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--light);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(232, 180, 184, 0.1), rgba(232, 180, 184, 0.3));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .service-img {
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+
+        .service-card:hover .service-img img {
+            transform: scale(1.1);
+        }
+
+        .service-content {
+            padding: 25px;
+            position: relative;
+            z-index: 1;
+            background: white;
+        }
+
+        .service-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--secondary);
+        }
+
+        .service-content p {
+            color: var(--text-light);
+            margin-bottom: 15px;
+        }
+
+        .service-price {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        /* Gallery Section - ОБНОВЛЕННЫЙ РАЗДЕЛ */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            height: 300px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.5s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.03);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay i {
+            color: white;
+            font-size: 2.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay i {
+            transform: scale(1.2);
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background-color: var(--accent);
+            padding: 100px 0;
+        }
+
+        .testimonials-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            height: 400px;
+        }
+
+        .testimonial {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin: 20px;
+            position: absolute;
+            width: calc(100% - 40px);
+            transition: all 0.5s ease;
+            opacity: 0;
+        }
+
+        .testimonial.active {
+            opacity: 1;
+        }
+
+        .testimonial img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 20px;
+            border: 5px solid var(--primary);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.5s ease;
+        }
+
+        .testimonial:hover img {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .testimonial p {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: var(--text-light);
+            font-size: 1.1rem;
+            position: relative;
+        }
+
+        .testimonial p::before,
+        .testimonial p::after {
+            content: '"';
+            font-size: 1.5rem;
+            color: var(--primary);
+            opacity: 0.5;
+        }
+
+        .testimonial h4 {
+            color: var(--secondary);
+            margin-top: 20px;
+        }
+
+        /* Booking Section */
+        .booking {
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), 
+                        url('images/image1.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .booking .section-title h2 {
+            color: white;
+        }
+
+        .booking-form {
+            background: white;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            transform: perspective(1000px) rotateX(0);
+            transition: all 0.5s ease;
+            color: var(--text);
+        }
+
+        .booking-form:hover {
+            transform: perspective(1000px) rotateX(5deg);
+            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.4);
+        }
+
+        .form-step {
+            display: none;
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        .form-step.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--secondary);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 15px 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background-color: #f9f9f9;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(232, 180, 184, 0.3);
+            background-color: white;
+        }
+
+        .services-grid-booking {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .service-card-booking {
+            border: 2px solid #eee;
+            padding: 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            background: white;
+        }
+
+        .service-card-booking:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-card-booking.selected {
+            border-color: var(--primary);
+            background-color: rgba(232, 180, 184, 0.1);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-card-booking h4 {
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+
+        .time-slots {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .time-btn {
+            background: #f5f5f5;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .time-btn:hover {
+            background: #e0e0e0;
+        }
+
+        .time-btn.selected {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 3px 10px rgba(232, 180, 184, 0.5);
+        }
+
+        .time-btn.booked {
+            background: #f5f5f5;
+            color: #999;
+            cursor: not-allowed;
+            text-decoration: line-through;
+            position: relative;
+        }
+
+        .time-btn.booked::after {
+            content: "Занято";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+
+        .form-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        /* My Bookings Section */
+        .my-bookings {
+            background-color: var(--light);
+        }
+
+        .bookings-list {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .booking-item {
+            border-bottom: 1px solid #eee;
+            padding: 20px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .booking-item:last-child {
+            border-bottom: none;
+        }
+
+        .booking-info h4 {
+            margin-bottom: 5px;
+            color: var(--secondary);
+        }
+
+        .booking-info p {
+            color: var(--text-light);
+            margin-bottom: 5px;
+        }
+
+        .booking-actions .btn-cancel {
+            background: #f5f5f5;
+            color: var(--text-light);
+            padding: 8px 15px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .booking-actions .btn-cancel:hover {
+            background: #ffebee;
+            color: #f44336;
+        }
+
+        .no-bookings {
+            text-align: center;
+            padding: 40px 0;
+            color: var(--text-light);
+        }
+
+        /* Contact Section */
+        .contact-info {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-item {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .contact-icon {
+            color: var(--primary);
+            font-size: 1.3rem;
+            margin-right: 15px;
+            margin-top: 3px;
+        }
+
+        .contact-item h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px) scale(1.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Training Section */
+        .training {
+            background-color: white;
+        }
+
+        .training-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .training-card {
+            background: var(--light);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            text-align: center;
+        }
+
+        .training-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(232, 180, 184, 0.1), rgba(232, 180, 184, 0.3));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-radius: 10px;
+        }
+
+        .training-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .training-card:hover::before {
+            opacity: 1;
+        }
+
+        .training-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .training-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--secondary);
+        }
+
+        .training-content p {
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+
+        /* Training Booking Form */
+        .training-form {
+            background: white;
+            max-width: 600px;
+            margin: 40px auto 0;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+        }
+
+        .training-form h3 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--secondary);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary);
+            color: white;
+            padding: 70px 0 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        .footer-content {
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: inline-block;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-logo span {
+            color: var(--primary);
+        }
+
+        .footer-logo:hover {
+            transform: scale(1.05);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .footer-links li {
+            margin: 0 15px 10px;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .copyright {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        .back-to-top {
+            position: absolute;
+            right: 30px;
+            top: -25px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .back-to-top:hover {
+            background: var(--primary-dark);
+            transform: translateY(-5px);
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .hero h1 {
+                font-size: 3.8rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .hero h1 {
+                font-size: 3.2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.5rem;
+            }
+            
+            .booking-form {
+                padding: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                height: 100vh;
+                background: var(--secondary);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: all 0.5s ease;
+                z-index: 1000;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links li {
+                margin: 20px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+            
+            .booking-form {
+                padding: 30px;
+            }
+            
+            .footer-logo {
+                font-size: 2.2rem;
+            }
+
+            .booking-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .booking-actions {
+                margin-top: 15px;
+                width: 100%;
+            }
+
+            .booking-actions .btn-cancel {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section {
+                padding: 70px 0;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .booking-form {
+                padding: 25px 20px;
+            }
+            
+            .services-grid-booking, .time-slots {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .form-navigation {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .form-navigation button {
+                width: 100%;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+            }
+            
+            .footer-links li {
+                margin: 10px 0;
+            }
+            
+            .back-to-top {
+                width: 40px;
+                height: 40px;
+                font-size: 1.1rem;
+                top: -20px;
+            }
+
+            .training-form {
+                padding: 25px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="home">
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">KATRIN<span>CITY</span></a>
+                <div class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#home">Главная</a></li>
+                    <li><a href="#about">О нас</a></li>
+                    <li><a href="#services">Услуги</a></li>
+                    <li><a href="#gallery">Галерея</a></li>
+                    <li><a href="#training">Обучение</a></li>
+                    <li><a href="#booking">Запись</a></li>
+                    <li><a href="#my-bookings">Мои записи</a></li>
+                    <li><a href="#contact">Контакты</a></li>
+                </ul>
+            </nav>
+            
+            <div class="hero">
+                <h1>Салон красоты KATRINCITY</h1>
+                <p>Профессиональные услуги по уходу за волосами, ногтями и телом</p>
+                <a href="#booking" class="btn">Записаться онлайн</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>О нашем салоне</h2>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-img">
+                    <img src="images/image1.jpg" alt="Салон KATRINCITY">
+                </div>
+                
+                <div class="about-text">
+                    <h3>Добро пожаловать в KATRINCITY</h3>
+                    <p>Наш салон предлагает широкий спектр услуг по уходу за вашей красотой. Мы работаем только с профессиональной косметикой и используем современные технологии.</p>
+                    <p>Наши мастера - настоящие профессионалы своего дела с многолетним опытом работы. Мы постоянно совершенствуем свои навыки, посещая мастер-классы и семинары.</p>
+                    <p>В KATRINCITY вы можете расслабиться и доверить свою красоту в надежные руки. Мы создаем атмосферу комфорта и заботы для каждого клиента.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Наши услуги</h2>
+            </div>
+            
+            <div class="services-grid">
+                <!-- Парикмахерские услуги -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="images/image5.jpg" alt="Парикмахерские услуги">
+                    </div>
+                    <div class="service-content">
+                        <h3>Парикмахерские услуги</h3>
+                        <p>Стрижка женская: 800-2000 ₽</p>
+                        <p>Сложное окрашивание: 8000 ₽</p>
+                        <p>Мелирование: 3500 ₽</p>
+                        <p>Ламинирование волос: 4000 ₽</p>
+                        <p>Наращивание волос: 8000 ₽</p>
+                        <div class="service-price">от 800 ₽</div>
+                    </div>
+                </div>
+                
+                <!-- Ногтевой сервис -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="images/image2.jpg" alt="Ногтевой сервис">
+                    </div>
+                    <div class="service-content">
+                        <h3>Ногтевой сервис</h3>
+                        <p>Маникюр классический: 1000 ₽</p>
+                        <p>Маникюр комплекс: 1800 ₽</p>
+                        <p>Педикюр комплекс: 2200 ₽</p>
+                        <p>Снятие шелака: 500 ₽</p>
+                        <p>Френч: 500 ₽</p>
+                        <div class="service-price">от 500 ₽</div>
+                    </div>
+                </div>
+                
+                <!-- Косметология -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="images/image3.jpg" alt="Косметология">
+                    </div>
+                    <div class="service-content">
+                        <h3>Косметология</h3>
+                        <p>Чистка лица: 3000 ₽</p>
+                        <p>Пилинг + маска: 3500 ₽</p>
+                        <p>Мезотерапия: 3500 ₽</p>
+                        <p>Ламинирование ресниц: 2000 ₽</p>
+                        <p>Наращивание ресниц: 2000-3000 ₽</p>
+                        <div class="service-price">от 500 ₽</div>
+                    </div>
+                </div>
+                
+                <!-- Массаж -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="images/image4.jpg" alt="Массаж">
+                    </div>
+                    <div class="service-content">
+                        <h3>Массаж</h3>
+                        <p>Массаж спины: 1500 ₽</p>
+                        <p>Массаж лица: 1000 ₽</p>
+                        <p>Массаж стоп: 1000 ₽</p>
+                        <p>Массаж тела комплекс: 3500 ₽</p>
+                        <p>Удаление мозолей: 500-600 ₽</p>
+                        <div class="service-price">от 1000 ₽</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Training Section -->
+    <section class="section training" id="training">
+        <div class="container">
+            <div class="section-title">
+                <h2>Обучение</h2>
+            </div>
+            
+            <div class="training-grid">
+                <div class="training-card">
+                    <div class="training-icon">
+                        <i class="fas fa-cut"></i>
+                    </div>
+                    <div class="training-content">
+                        <h3>Парикмахерское искусство</h3>
+                        <p>Профессиональное обучение парикмахерскому делу от основ до продвинутых техник. Научитесь создавать современные стрижки, окрашивания и укладки.</p>
+                        <button class="btn training-btn" data-training="Парикмахерское искусство">Записаться на обучение</button>
+                    </div>
+                </div>
+                
+                <div class="training-card">
+                    <div class="training-icon">
+                        <i class="fas fa-hand-paper"></i>
+                    </div>
+                    <div class="training-content">
+                        <h3>Маникюр и педикюр</h3>
+                        <p>Освойте все виды маникюра и педикюра: классический, аппаратный, комбинированный. Обучение работе с гель-лаками и наращиванием ногтей.</p>
+                        <button class="btn training-btn" data-training="Маникюр и педикюр">Записаться на обучение</button>
+                    </div>
+                </div>
+                
+                <div class="training-card">
+                    <div class="training-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <div class="training-content">
+                        <h3>Наращивание ресниц</h3>
+                        <p>Обучение всем техникам наращивания ресниц: классическое, объемное, мегаобъем. Работа с разными материалами и формами.</p>
+                        <button class="btn training-btn" data-training="Наращивание ресниц">Записаться на обучение</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Training Booking Form (hidden by default) -->
+            <div class="training-form" id="trainingForm" style="display: none;">
+                <h3>Запись на обучение: <span id="trainingTitle"></span></h3>
+                
+                <div class="form-group">
+                    <label for="trainingName">Ваше имя *</label>
+                    <input type="text" id="trainingName" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="trainingPhone">Телефон *</label>
+                    <input type="tel" id="trainingPhone" class="form-control" required placeholder="+7 (___) ___-__-__">
+                </div>
+                
+                <div class="form-group">
+                    <label for="trainingEmail">Email (необязательно)</label>
+                    <input type="email" id="trainingEmail" class="form-control">
+                </div>
+                
+                <div class="form-navigation">
+                    <button class="btn" id="trainingBack">Назад</button>
+                    <button class="btn" id="trainingSubmit">Отправить заявку</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section - ОБНОВЛЕННЫЙ РАЗДЕЛ -->
+    <section class="section" id="gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2>Наши работы</h2>
+            </div>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="images/image5.jpg" alt="Парикмахерские услуги">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="images/image6.jpg" alt="Наша работа 6">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="images/image7.jpg" alt="Наша работа 7">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="images/image8.jpg" alt="Наша работа 8">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Отзывы клиентов</h2>
+            </div>
+            
+            <div class="testimonials-slider">
+                <div class="testimonial active">
+                    <img src="https://randomuser.me/api/portraits/women/43.jpg" alt="Клиент 1">
+                    <p>"Очень довольна результатом! Мастер Екатерина - настоящий профессионал. Волосы после окрашивания выглядят просто потрясающе!"</p>
+                    <h4>Анна</h4>
+                </div>
+                
+                <div class="testimonial">
+                    <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Клиент 2">
+                    <p>"Хожу в этот салон уже несколько лет. Всегда качественное обслуживание и приятная атмосфера. Особенно нравятся маникюр и наращивание ресниц."</p>
+                    <h4>Мария</h4>
+                </div>
+                
+                <div class="testimonial">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Клиент 3">
+                    <p>"Лучший массаж в городе! После тяжелой недели просто необходимость. Персонал вежливый, салон чистый и уютный."</p>
+                    <h4>Дмитрий</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- My Bookings Section -->
+    <section class="section my-bookings" id="my-bookings">
+        <div class="container">
+            <div class="section-title">
+                <h2>Мои записи</h2>
+            </div>
+            
+            <div class="bookings-list">
+                <div id="bookings-container">
+                    <!-- Bookings will be loaded here by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section class="section booking" id="booking">
+        <div class="container">
+            <div class="section-title">
+                <h2>Онлайн запись</h2>
+            </div>
+            
+            <div class="booking-form">
+                <div class="form-step active" id="step1">
+                    <h3>Выберите услугу</h3>
+                    <div class="services-grid-booking">
+                        <!-- Парикмахерские услуги -->
+                        <div class="service-card-booking" data-service="Женская стрижка" data-price="800-2000 ₽" data-category="hair">
+                            <h4>Женская стрижка</h4>
+                            <p>800-2000 ₽</p>
+                        </div>
+                        <div class="service-card-booking" data-service="Сложное окрашивание" data-price="8000 ₽" data-category="hair">
+                            <h4>Сложное окрашивание</h4>
+                            <p>8000 ₽</p>
+                        </div>
+                        <div class="service-card-booking" data-service="Мелирование" data-price="3500 ₽" data-category="hair">
+                            <h4>Мелирование</h4>
+                            <p>3500 ₽</p>
+                        </div>
+                        <div class="service-card-booking" data-service="Ламинирование волос" data-price="4000 ₽" data-category="hair">
+                            <h4>Ламинирование волос</h4>
+                            <p>4000 ₽</p>
+                        </div>
+                        <div class="service-card-booking" data-service="Наращивание волос" data-price="8000 ₽" data-category="hair">
+                            <h4>Наращивание волос</h4>
+                            <p>8000 ₽</p>
+                        </div>
+                        
+                        <!-- Ногтевой сервис -->
+                        <div class="service-card-booking" data-service="Маникюр классический" data-price="1000 ₽" data-category="nails">
+                            <h4>Маникюр классический</h4>
+                            <p>1000 ₽</p>
+                        </div>
+                        <div class="service-card-booking" data-service="Маникюр комплекс" data-price="1800 ₽" data-category="nails">
+                            <h4>Маникюр комплекс</h4>
+                            <p>1800 ₽</p>
+                        </div>
+                        <div class="service-card-booking" data-service="Педикюр комплекс" data-price="2200 ₽" data-category="nails">
+                            <h4>Педикюр комплекс</h4>
+                            <p>2200 ₽</p>
+                        </div>
+                        <div class="service-card-booking" data-service="Снятие шелака" data-price="500 ₽" data-category="nails">
+                            <h4>Снятие шелака</h4>
+                            <p>500 ₽</p>
+                        </div>
+                        <div class="service-card-booking" data-service="Френч" data-price="500 ₽" data-category="nails">
+                            <h4>Френч</h4>
+                            <p>500 ₽</p>
+                        </div>
+                        
+                        <!-- Косметология -->
+                        <div class="service-card-booking" data-service="Чистка лица" data-price="3000 ₽" data-category="cosmetology">
+                            <h4>Чистка лица</h4>
+                            <p>3000 ₽</p>
+                        </div>
+                        <div class="service-card-booking" data-service="Пилинг + маска" data-price="3500 ₽" data-category="cosmetology">
+                            <h4>Пилинг + маска</h4>
+                            <p>3500 ₽</p>
+                        </div>
+                        <div class="service-card-booking" data-service="Мезотерапия" data-price="3500 ₽" data-category="cosmetology">
+                            <h4>Мезотерапия</h4>
+                            <p>3500 ₽</p>
+                        </div>
+                        <div class="service-card-booking" data-service="Ламинирование ресниц" data-price="2000 ₽" data-category="cosmetology">
+                            <h4>Ламинирование ресниц</h4>
+                            <p>2000 ₽</p>
+                        </div>
+                        <div class="service-card-booking" data-service="Наращивание ресниц" data-price="2000-3000 ₽" data-category="cosmetology">
+                            <h4>Наращивание ресниц</h4>
+                            <p>2000-3000 ₽</p>
+                        </div>
+                        
+                        <!-- Массаж -->
+                        <div class="service-card-booking" data-service="Массаж спины" data-price="1500 ₽" data-category="massage">
+                            <h4>Массаж спины</h4>
+                            <p>1500 ₽</p>
+                        </div>
+                        <div class="service-card-booking" data-service="Массаж лица" data-price="1000 ₽" data-category="massage">
+                            <h4>Массаж лица</h4>
+                            <p>1000 ₽</p>
+                        </div>
+                        <div class="service-card-booking" data-service="Массаж стоп" data-price="1000 ₽" data-category="massage">
+                            <h4>Массаж стоп</h4>
+                            <p>1000 ₽</p>
+                        </div>
+                        <div class="service-card-booking" data-service="Массаж тела комплекс" data-price="3500 ₽" data-category="massage">
+                            <h4>Массаж тела комплекс</h4>
+                            <p>3500 ₽</p>
+                        </div>
+                        <div class="service-card-booking" data-service="Удаление мозолей" data-price="500-600 ₽" data-category="massage">
+                            <h4>Удаление мозолей</h4>
+                            <p>500-600 ₽</p>
+                        </div>
+                    </div>
+                    
+                    <div class="form-navigation">
+                        <button class="btn next-step" data-step="1">Далее</button>
+                    </div>
+                </div>
+                
+                <div class="form-step" id="step2">
+                    <h3>Выберите дату и время</h3>
+                    
+                    <div class="form-group">
+                        <label for="bookingDate">Дата</label>
+                        <input type="date" id="bookingDate" class="form-control" min="">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Доступное время</label>
+                        <div class="time-slots">
+                            <!-- Временные слоты будут генерироваться через JS -->
+                        </div>
+                    </div>
+                    
+                    <div class="form-navigation">
+                        <button class="btn prev-step" data-step="2">Назад</button>
+                        <button class="btn next-step" data-step="2">Далее</button>
+                    </div>
+                </div>
+                
+                <div class="form-step" id="step3">
+                    <h3>Ваши контактные данные</h3>
+                    
+                    <div class="form-group">
+                        <label for="clientName">Ваше имя *</label>
+                        <input type="text" id="clientName" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="clientPhone">Телефон *</label>
+                        <input type="tel" id="clientPhone" class="form-control" required placeholder="+7 (___) ___-__-__">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="clientEmail">Email (необязательно)</label>
+                        <input type="email" id="clientEmail" class="form-control">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="clientNotes">Комментарий (необязательно)</label>
+                        <textarea id="clientNotes" class="form-control" rows="3"></textarea>
+                    </div>
+                    
+                    <div class="form-navigation">
+                        <button class="btn prev-step" data-step="3">Назад</button>
+                        <button class="btn submit-booking">Подтвердить запись</button>
+                    </div>
+                </div>
+                
+                <div class="form-step" id="step4">
+                    <h3>Спасибо за запись!</h3>
+                    <p>Ваша запись успешно оформлена. Мы свяжемся с вами для подтверждения.</p>
+                    <div class="booking-details"></div>
+                    <button class="btn new-booking">Новая запись</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Контакты</h2>
+            </div>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div>
+                        <h4>Адрес</h4>
+                        <p>Саввинская улица, 2А, микрорайон Саввино, Балашиха, Московская область, 143985</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div>
+                        <h4>Телефон</h4>
+                        <p>+7 (933) 205-84-64</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div>
+                        <h4>Email</h4>
+                        <p>info@katrincity.ru</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div>
+                        <h4>Часы работы</h4>
+                        <p>Пн-Пт: 10:00 - 20:00<br>Сб-Вс: 10:00 - 18:00</p>
+                    </div>
+                </div>
+                
+                <div class="social-links">
+                    <a href="https://vk.com/katrincity0?from=groups" target="_blank" class="social-link"><i class="fab fa-vk"></i></a>
+                    <a href="https://t.me/+GZeF9BK5NPgyZmEy" target="_blank" class="social-link"><i class="fab fa-telegram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <a href="#" class="footer-logo">KATRIN<span>CITY</span></a>
+                <p>Профессиональный салон красоты в Балашихе</p>
+                
+                <ul class="footer-links">
+                    <li><a href="#home">Главная</a></li>
+                    <li><a href="#about">О нас</a></li>
+                    <li><a href="#services">Услуги</a></li>
+                    <li><a href="#training">Обучение</a></li>
+                    <li><a href="#gallery">Галерея</a></li>
+                    <li><a href="#booking">Запись</a></li>
+                    <li><a href="#my-bookings">Мои записи</a></li>
+                    <li><a href="#contact">Контакты</a></li>
+                </ul>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 KATRINCITY. Все права защищены.</p>
+            </div>
+            
+            <div class="back-to-top">
+                <i class="fas fa-arrow-up"></i>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Close menu when link is clicked
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+        
+        // Close menu when scrolling
+        window.addEventListener('scroll', () => {
+            if (navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+            }
+        });
+        
+        // Booking Form Logic
+        const steps = document.querySelectorAll('.form-step');
+        let currentStep = 0;
+        let bookingData = {
+            service: '',
+            price: '',
+            category: '',
+            date: '',
+            time: '',
+            name: '',
+            phone: '',
+            email: '',
+            notes: ''
+        };
+
+        // Telegram bot settings
+        const TELEGRAM_BOT_TOKEN = '8131560533:AAEiD_GPJqwbVFIQs9LOqRXPxwCtySSrE98';
+        const TELEGRAM_CHAT_ID = '8046393838';
+
+        // Function to get booked time slots from localStorage
+        function getBookedSlots() {
+            const bookedSlots = localStorage.getItem('bookedTimeSlots');
+            return bookedSlots ? JSON.parse(bookedSlots) : {};
+        }
+
+        // Function to save booked time slot to localStorage
+        function saveBookedSlot(date, time, category) {
+            const bookedSlots = getBookedSlots();
+            const slotKey = `${date}_${category}`;
+            
+            if (!bookedSlots[slotKey]) {
+                bookedSlots[slotKey] = [];
+            }
+            if (!bookedSlots[slotKey].includes(time)) {
+                bookedSlots[slotKey].push(time);
+                localStorage.setItem('bookedTimeSlots', JSON.stringify(bookedSlots));
+            }
+        }
+
+        // Function to remove booked time slot from localStorage
+        function removeBookedSlot(date, time, category) {
+            const bookedSlots = getBookedSlots();
+            const slotKey = `${date}_${category}`;
+            
+            if (bookedSlots[slotKey]) {
+                bookedSlots[slotKey] = bookedSlots[slotKey].filter(slot => slot !== time);
+                localStorage.setItem('bookedTimeSlots', JSON.stringify(bookedSlots));
+            }
+        }
+
+        // Function to check if time slot is booked
+        function isSlotBooked(date, time, category) {
+            const bookedSlots = getBookedSlots();
+            const slotKey = `${date}_${category}`;
+            return bookedSlots[slotKey] && bookedSlots[slotKey].includes(time);
+        }
+
+        // Function to send data to Telegram
+        async function sendToTelegram(data, isCancellation = false) {
+            let message;
+            
+            if (isCancellation) {
+                message = `❌ Отмена записи в KATRINCITY:
+                
+🔹 Услуга: ${data.service}
+💰 Цена: ${data.price}
+📅 Дата: ${data.date}
+⏰ Время: ${data.time}
+👤 Имя: ${data.name}
+📞 Телефон: ${data.phone}`;
+            } else {
+                message = `📌 Новая запись в KATRINCITY:
+                
+🔹 Услуга: ${data.service}
+💰 Цена: ${data.price}
+📅 Дата: ${data.date}
+⏰ Время: ${data.time}
+👤 Имя: ${data.name}
+📞 Телефон: ${data.phone}
+📧 Email: ${data.email || 'не указан'}
+💬 Комментарий: ${data.notes || 'нет'}`;
+            }
+
+            try {
+                const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        chat_id: TELEGRAM_CHAT_ID,
+                        text: message,
+                        parse_mode: 'HTML'
+                    })
+                });
+
+                const result = await response.json();
+                console.log('Telegram response:', result);
+                return result.ok;
+            } catch (error) {
+                console.error('Error sending to Telegram:', error);
+                return false;
+            }
+        }
+
+        // Training Form Logic
+        let selectedTraining = '';
+        const trainingForm = document.getElementById('trainingForm');
+        const trainingTitle = document.getElementById('trainingTitle');
+        const trainingBtns = document.querySelectorAll('.training-btn');
+        const trainingBackBtn = document.getElementById('trainingBack');
+        const trainingSubmitBtn = document.getElementById('trainingSubmit');
+        const trainingCards = document.querySelectorAll('.training-card');
+
+        // Show training form when a training is selected
+        trainingBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                selectedTraining = this.dataset.training;
+                trainingTitle.textContent = selectedTraining;
+                
+                // Hide all training cards
+                trainingCards.forEach(card => {
+                    card.style.display = 'none';
+                });
+                
+                // Show the form
+                trainingForm.style.display = 'block';
+                
+                // Scroll to form
+                trainingForm.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Back button in training form
+        trainingBackBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Show all training cards
+            trainingCards.forEach(card => {
+                card.style.display = 'block';
+            });
+            
+            // Hide the form
+            trainingForm.style.display = 'none';
+            
+            // Scroll to training section
+            document.getElementById('training').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Submit training form
+        trainingSubmitBtn.addEventListener('click', async function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('trainingName').value;
+            const phone = document.getElementById('trainingPhone').value;
+            const email = document.getElementById('trainingEmail').value;
+            
+            if (!name || !phone) {
+                alert('Пожалуйста, заполните обязательные поля');
+                return;
+            }
+            
+            // Validate phone number
+            const phoneRegex = /^\+7\s?\(?\d{3}\)?\s?\d{3}-?\d{2}-?\d{2}$/;
+            if (!phoneRegex.test(phone)) {
+                alert('Пожалуйста, введите корректный номер телефона');
+                return;
+            }
+            
+            // Prepare data for Telegram
+            const trainingData = {
+                training: selectedTraining,
+                name: name,
+                phone: phone,
+                email: email || 'не указан'
+            };
+            
+            // Send data to Telegram
+            const message = `📚 Новая заявка на обучение в KATRINCITY:
+                
+🎓 Курс: ${trainingData.training}
+👤 Имя: ${trainingData.name}
+📞 Телефон: ${trainingData.phone}
+📧 Email: ${trainingData.email}`;
+
+            try {
+                const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        chat_id: TELEGRAM_CHAT_ID,
+                        text: message,
+                        parse_mode: 'HTML'
+                    })
+                });
+
+                const result = await response.json();
+                
+                if (result.ok) {
+                    alert('Ваша заявка на обучение успешно отправлена! Мы свяжемся с вами в ближайшее время.');
+                    
+                    // Reset form
+                    document.getElementById('trainingName').value = '';
+                    document.getElementById('trainingPhone').value = '';
+                    document.getElementById('trainingEmail').value = '';
+                    
+                    // Show all training cards
+                    trainingCards.forEach(card => {
+                        card.style.display = 'block';
+                    });
+                    
+                    // Hide the form
+                    trainingForm.style.display = 'none';
+                } else {
+                    alert('Произошла ошибка при отправке заявки. Пожалуйста, попробуйте позже или свяжитесь с нами по телефону.');
+                }
+            } catch (error) {
+                console.error('Error sending training request:', error);
+                alert('Произошла ошибка при отправке заявки. Пожалуйста, попробуйте позже или свяжитесь с нами по телефону.');
+            }
+        });
+
+        // Phone number input mask for training form
+        document.getElementById('trainingPhone').addEventListener('input', function(e) {
+            let x = this.value.replace(/\D/g, '').match(/(\d{0,1})(\d{0,3})(\d{0,3})(\d{0,2})(\d{0,2})/);
+            this.value = !x[2] ? '+7' + x[1] : '+7 (' + x[2] + ') ' + x[3] + (x[4] ? '-' + x[4] : '') + (x[5] ? '-' + x[5] : '');
+        });
+        
+        // Set min date for booking (today)
+        document.getElementById('bookingDate').min = new Date().toISOString().split('T')[0];
+        
+        // Service selection
+        document.querySelectorAll('.service-card-booking').forEach(card => {
+            card.addEventListener('click', () => {
+                document.querySelectorAll('.service-card-booking').forEach(c => {
+                    c.classList.remove('selected');
+                });
+                card.classList.add('selected');
+                bookingData.service = card.dataset.service;
+                bookingData.price = card.dataset.price;
+                bookingData.category = card.dataset.category;
+            });
+        });
+        
+        // Date selection - generate time slots
+        document.getElementById('bookingDate').addEventListener('change', function() {
+            if (!bookingData.category) return;
+            
+            bookingData.date = this.value;
+            const timeSlots = document.querySelector('.time-slots');
+            timeSlots.innerHTML = '';
+            
+            // Generate time slots (every 30 minutes from 10:00 to 20:00)
+            const startHour = 10;
+            const endHour = 20;
+            const bookedSlots = getBookedSlots();
+            const slotKey = `${bookingData.date}_${bookingData.category}`;
+            const todayBookedSlots = bookedSlots[slotKey] || [];
+            
+            for (let hour = startHour; hour < endHour; hour++) {
+                for (let minute = 0; minute < 60; minute += 30) {
+                    const timeString = `${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}`;
+                    
+                    const timeBtn = document.createElement('button');
+                    timeBtn.className = 'time-btn';
+                    timeBtn.textContent = timeString;
+                    
+                    // Mark as booked if already taken
+                    if (todayBookedSlots.includes(timeString)) {
+                        timeBtn.classList.add('booked');
+                        timeBtn.disabled = true;
+                    } else {
+                        timeBtn.addEventListener('click', function(e) {
+                            e.preventDefault();
+                            document.querySelectorAll('.time-btn').forEach(btn => {
+                                btn.classList.remove('selected');
+                            });
+                            this.classList.add('selected');
+                            bookingData.time = this.textContent;
+                        });
+                    }
+                    
+                    timeSlots.appendChild(timeBtn);
+                }
+            }
+            
+            // Show message if no slots available
+            if (timeSlots.querySelectorAll('.time-btn:not(.booked)').length === 0) {
+                timeSlots.innerHTML = '<p>На эту дату все время занято. Пожалуйста, выберите другую дату.</p>';
+            }
+        });
+
+        // Phone number input mask
+        document.getElementById('clientPhone').addEventListener('input', function(e) {
+            let x = this.value.replace(/\D/g, '').match(/(\d{0,1})(\d{0,3})(\d{0,3})(\d{0,2})(\d{0,2})/);
+            this.value = !x[2] ? '+7' + x[1] : '+7 (' + x[2] + ') ' + x[3] + (x[4] ? '-' + x[4] : '') + (x[5] ? '-' + x[5] : '');
+        });
+
+        // Form navigation
+        document.querySelectorAll('.next-step').forEach(btn => {
+            btn.addEventListener('click', async function(e) {
+                e.preventDefault();
+                const step = parseInt(this.dataset.step);
+                
+                // Validate before proceeding
+                if (step === 1 && !bookingData.service) {
+                    alert('Пожалуйста, выберите услугу');
+                    return;
+                }
+                
+                if (step === 2 && (!bookingData.date || !bookingData.time)) {
+                    alert('Пожалуйста, выберите дату и время');
+                    return;
+                }
+                
+                steps[currentStep].classList.remove('active');
+                currentStep++;
+                steps[currentStep].classList.add('active');
+            });
+        });
+
+        // Previous step buttons
+        document.querySelectorAll('.prev-step').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                steps[currentStep].classList.remove('active');
+                currentStep--;
+                steps[currentStep].classList.add('active');
+            });
+        });
+        
+        // Submit booking button
+        document.querySelector('.submit-booking')?.addEventListener('click', async function(e) {
+            e.preventDefault();
+            
+            bookingData.name = document.getElementById('clientName').value;
+            bookingData.phone = document.getElementById('clientPhone').value;
+            bookingData.email = document.getElementById('clientEmail').value;
+            bookingData.notes = document.getElementById('clientNotes').value;
+            
+            if (!bookingData.name || !bookingData.phone) {
+                alert('Пожалуйста, заполните обязательные поля');
+                return;
+            }
+            
+            // Validate phone number
+            const phoneRegex = /^\+7\s?\(?\d{3}\)?\s?\d{3}-?\d{2}-?\d{2}$/;
+            if (!phoneRegex.test(bookingData.phone)) {
+                alert('Пожалуйста, введите корректный номер телефона');
+                return;
+            }
+            
+            // Save booked slot to localStorage
+            saveBookedSlot(bookingData.date, bookingData.time, bookingData.category);
+            
+            // Save booking to bookings list
+            saveBooking(bookingData);
+            
+            // Send data to Telegram
+            const sent = await sendToTelegram(bookingData);
+            
+            if (!sent) {
+                alert('Произошла ошибка при отправке данных. Пожалуйста, попробуйте позже или свяжитесь с нами по телефону.');
+                return;
+            }
+            
+            // Show confirmation
+            const bookingDetails = document.querySelector('.booking-details');
+            bookingDetails.innerHTML = `
+                <p><strong>Услуга:</strong> ${bookingData.service}</p>
+                <p><strong>Цена:</strong> ${bookingData.price}</p>
+                <p><strong>Дата:</strong> ${bookingData.date}</p>
+                <p><strong>Время:</strong> ${bookingData.time}</p>
+                <p><strong>Имя:</strong> ${bookingData.name}</p>
+                <p><strong>Телефон:</strong> ${bookingData.phone}</p>
+            `;
+            
+            steps[currentStep].classList.remove('active');
+            currentStep = 3; // Go to confirmation step
+            steps[currentStep].classList.add('active');
+            
+            // Update bookings list
+            displayBookings();
+        });
+        
+        // New booking
+        document.querySelector('.new-booking')?.addEventListener('click', function(e) {
+            e.preventDefault();
+            steps[currentStep].classList.remove('active');
+            currentStep = 0;
+            steps[currentStep].classList.add('active');
+            
+            // Reset form
+            bookingData = {
+                service: '',
+                price: '',
+                category: '',
+                date: '',
+                time: '',
+                name: '',
+                phone: '',
+                email: '',
+                notes: ''
+            };
+            
+            document.querySelectorAll('.service-card-booking').forEach(c => {
+                c.classList.remove('selected');
+            });
+            
+            document.getElementById('bookingDate').value = '';
+            document.querySelector('.time-slots').innerHTML = '';
+            document.getElementById('clientName').value = '';
+            document.getElementById('clientPhone').value = '';
+            document.getElementById('clientEmail').value = '';
+            document.getElementById('clientNotes').value = '';
+        });
+        
+        // Back to top button
+        const backToTop = document.querySelector('.back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTop.style.display = 'flex';
+            } else {
+                backToTop.style.display = 'none';
+            }
+        });
+        
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Scroll animations
+        const sections = document.querySelectorAll('.section');
+        
+        function checkScroll() {
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (sectionTop < windowHeight - 100) {
+                    section.classList.add('in-view');
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', checkScroll);
+        window.addEventListener('load', checkScroll);
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Testimonials slider
+        let currentTestimonial = 0;
+        const testimonials = document.querySelectorAll('.testimonial');
+        
+        function showTestimonial(index) {
+            testimonials.forEach((testimonial, i) => {
+                testimonial.classList.toggle('active', i === index);
+            });
+        }
+        
+        function nextTestimonial() {
+            currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+            showTestimonial(currentTestimonial);
+        }
+        
+        // Auto-rotate testimonials every 5 seconds
+        setInterval(nextTestimonial, 5000);
+        
+        // Show first testimonial initially
+        showTestimonial(0);
+
+        // My Bookings Section Logic
+        function saveBooking(booking) {
+            const bookings = JSON.parse(localStorage.getItem('clientBookings') || '[]');
+            const bookingId = Date.now().toString();
+            
+            bookings.push({
+                id: bookingId,
+                ...booking
+            });
+            
+            localStorage.setItem('clientBookings', JSON.stringify(bookings));
+        }
+
+        function getBookings() {
+            return JSON.parse(localStorage.getItem('clientBookings') || '[]');
+        }
+
+        async function cancelBooking(bookingId) {
+            const bookings = getBookings();
+            const bookingToCancel = bookings.find(booking => booking.id === bookingId);
+            
+            if (!bookingToCancel) return;
+            
+            // Remove the time slot from booked slots
+            removeBookedSlot(bookingToCancel.date, bookingToCancel.time, bookingToCancel.category);
+            
+            // Send cancellation notification to Telegram
+            await sendToTelegram(bookingToCancel, true);
+            
+            // Remove the booking from the list
+            const updatedBookings = bookings.filter(booking => booking.id !== bookingId);
+            localStorage.setItem('clientBookings', JSON.stringify(updatedBookings));
+            
+            // Update the display
+            displayBookings();
+            
+            // Show success message
+            alert('Запись успешно отменена');
+        }
+
+        function displayBookings() {
+            const bookingsContainer = document.getElementById('bookings-container');
+            const bookings = getBookings();
+            
+            if (bookings.length === 0) {
+                bookingsContainer.innerHTML = `
+                    <div class="no-bookings">
+                        <i class="far fa-calendar-alt" style="font-size: 3rem; margin-bottom: 15px;"></i>
+                        <p>У вас пока нет активных записей</p>
+                        <a href="#booking" class="btn" style="margin-top: 20px;">Записаться сейчас</a>
+                    </div>
+                `;
+                return;
+            }
+            
+            bookingsContainer.innerHTML = '';
+            
+            bookings.forEach(booking => {
+                const bookingElement = document.createElement('div');
+                bookingElement.className = 'booking-item';
+                bookingElement.innerHTML = `
+                    <div class="booking-info">
+                        <h4>${booking.service}</h4>
+                        <p><strong>Дата:</strong> ${booking.date}</p>
+                        <p><strong>Время:</strong> ${booking.time}</p>
+                        <p><strong>Цена:</strong> ${booking.price}</p>
+                    </div>
+                    <div class="booking-actions">
+                        <button class="btn-cancel" data-id="${booking.id}">Отменить запись</button>
+                    </div>
+                `;
+                
+                bookingsContainer.appendChild(bookingElement);
+            });
+            
+            // Add event listeners to cancel buttons
+            document.querySelectorAll('.btn-cancel').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    if (confirm('Вы уверены, что хотите отменить эту запись?')) {
+                        cancelBooking(this.dataset.id);
+                    }
+                });
+            });
+        }
+
+        // Initialize bookings display when page loads
+        document.addEventListener('DOMContentLoaded', displayBookings);
+    </script>
+</body>
+</html>
